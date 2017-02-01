@@ -1,2 +1,2 @@
-# SoftwareEngineering
-A class project
+# Virtual Stock
+A stock trading software
