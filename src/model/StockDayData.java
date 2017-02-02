@@ -8,6 +8,10 @@ import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author mzhu7
+ *
+ */
 public class StockDayData {
 
 	public static void main(String[] args) throws IOException{

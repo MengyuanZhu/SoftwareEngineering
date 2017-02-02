@@ -8,11 +8,15 @@ import java.util.Locale;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import virtualStock.model.StockDayData;
 import javafx.scene.chart.XYChart;
+
+/**
+ * @author mzhu7
+ *
+ */
 public class StockDayController {
 
 	@FXML

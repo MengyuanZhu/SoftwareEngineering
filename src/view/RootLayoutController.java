@@ -8,12 +8,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import virtualStock.MainApp;
 
+
 /**
- * The controller for the root layout. The root layout provides the basic
- * application layout containing a menu bar and space where other JavaFX
- * elements can be placed.
- * 
- * @author Marco Jakob
+ * @author mzhu7
+ *
  */
 public class RootLayoutController {
 
@@ -122,7 +120,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleShowBirthdayStatistics() {
-      mainApp.showBirthdayStatistics();
+      mainApp.showStatistics();
     }
     
     

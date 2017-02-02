@@ -21,11 +21,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import virtualStock.model.Person;
-import virtualStock.model.PersonListWrapper;
-import virtualStock.view.BirthdayStatisticsController;
-import virtualStock.view.PersonEditDialogController;
-import virtualStock.view.PersonOverviewController;
+import virtualStock.model.Stock;
+import virtualStock.model.StockListWrapper;
+import virtualStock.view.StatisticsController;
+import virtualStock.view.StockPurchaseController;
+import virtualStock.view.StockOverviewController;
 import virtualStock.view.RootLayoutController;
 import virtualStock.view.StockDayController;
 
@@ -38,7 +38,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ObservableList<Person> personData = FXCollections.observableArrayList();
+    private ObservableList<Stock> personData = FXCollections.observableArrayList();
 
 
     @Override
@@ -49,36 +49,27 @@ public class MainApp extends Application {
 
         initRootLayout();
 
-        showPersonOverview();
+        showStockOverview();
     }
     
     public MainApp() {
-        // Add some sample data
-        personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        // Add some sample data  
     }
 
 
     
-    public void showPersonOverview() {
+    public void showStockOverview() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/StockOverview.fxml"));
             AnchorPane personOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
 
             // Give the controller access to the main app.
-            PersonOverviewController controller = loader.getController();
+            StockOverviewController controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {
@@ -94,25 +85,25 @@ public class MainApp extends Application {
      * @param person the person object to be edited
      * @return true if the user clicked OK, false otherwise.
      */
-    public boolean showPersonEditDialog(Person person) {
+    public boolean showStockPurchaseDialog(Stock person) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/StockPurchaseDialog.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Person");
+            dialogStage.setTitle("Buy Stock");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            PersonEditDialogController controller = loader.getController();
+            StockPurchaseController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setPerson(person);
+            controller.setStock(person);
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
@@ -137,7 +128,7 @@ public class MainApp extends Application {
         launch(args);
     }
     
-    public ObservableList<Person> getPersonData() {
+    public ObservableList<Stock> getPersonData() {
         return personData;
     }
     
@@ -189,11 +180,11 @@ public class MainApp extends Application {
 	public void loadPersonDataFromFile(File file) {
 	    try {
 	        JAXBContext context = JAXBContext
-	                .newInstance(PersonListWrapper.class);
+	                .newInstance(StockListWrapper.class);
 	        Unmarshaller um = context.createUnmarshaller();
 	
 	        // Reading XML from the file and unmarshalling.
-	        PersonListWrapper wrapper = (PersonListWrapper) um.unmarshal(file);
+	        StockListWrapper wrapper = (StockListWrapper) um.unmarshal(file);
 	
 	        personData.clear();
 	        personData.addAll(wrapper.getPersons());
@@ -219,12 +210,12 @@ public class MainApp extends Application {
 	public void savePersonDataToFile(File file) {
 	    try {
 	        JAXBContext context = JAXBContext
-	                .newInstance(PersonListWrapper.class);
+	                .newInstance(StockListWrapper.class);
 	        Marshaller m = context.createMarshaller();
 	        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 	
 	        // Wrapping our person data.
-	        PersonListWrapper wrapper = new PersonListWrapper();
+	        StockListWrapper wrapper = new StockListWrapper();
 	        wrapper.setPersons(personData);
 	
 	        // Marshalling and saving XML to the file.
@@ -281,11 +272,11 @@ public class MainApp extends Application {
 	/**
 	 * Opens a dialog to show birthday statistics.
 	 */
-	public void showBirthdayStatistics() {
+	public void showStatistics() {
 	    try {
 	        // Load the fxml file and create a new stage for the popup.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("view/BirthdayStatistics.fxml"));
+	        loader.setLocation(MainApp.class.getResource("view/Statistics.fxml"));
 	        AnchorPane page = (AnchorPane) loader.load();
 	        Stage dialogStage = new Stage();
 	        dialogStage.setTitle("Birthday Statistics");
@@ -295,7 +286,7 @@ public class MainApp extends Application {
 	        dialogStage.setScene(scene);
 
 	        // Set the persons into the controller.
-	        BirthdayStatisticsController controller = loader.getController();
+	        StatisticsController controller = loader.getController();
 	        controller.setPersonData(personData);
 
 	        dialogStage.show();

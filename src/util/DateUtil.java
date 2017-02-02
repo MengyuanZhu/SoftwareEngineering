@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * @author mzhu7
+ *
+ */
 public class DateUtil {
 
     /** The date pattern that is used for conversion. Change as you wish. */
