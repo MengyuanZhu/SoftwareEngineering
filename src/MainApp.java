@@ -85,7 +85,7 @@ public class MainApp extends Application {
      * @param person the person object to be edited
      * @return true if the user clicked OK, false otherwise.
      */
-    public boolean showStockPurchaseDialog(Stock person) {
+    public boolean showStockPurchaseDialog(Stock myStock) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -103,7 +103,7 @@ public class MainApp extends Application {
             // Set the person into the controller.
             StockPurchaseController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setStock(person);
+            controller.setStock(myStock);
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();

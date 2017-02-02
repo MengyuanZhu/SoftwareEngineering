@@ -16,24 +16,41 @@ import javafx.scene.control.TableView;
  */
 public class StockOverviewController {
     @FXML
-    private TableView<Stock> personTable;
+    private TableView<Stock> stockTable;
     @FXML
-    private TableColumn<Stock, String> firstNameColumn;
+    private TableColumn<Stock, String> stockColumn;
     @FXML
-    private TableColumn<Stock, String> lastNameColumn;
-
+    private TableColumn<Stock, String> priceColumn;
     @FXML
-    private Label firstNameLabel;
+    private TableColumn<Stock, String> sharesColumn;    
+    
+    
     @FXML
-    private Label lastNameLabel;
+    private Label stockLabel;    
     @FXML
-    private Label streetLabel;
+    private Label priceLabel;    
     @FXML
-    private Label postalCodeLabel;
+    private Label sharesLabel;    
     @FXML
-    private Label cityLabel;
+    private Label openLabel;
     @FXML
-    private Label birthdayLabel;
+    private Label todayHighLabel;
+    @FXML
+    private Label todayLowLabel;
+    @FXML
+    private Label yearHighLabel;
+    @FXML
+    private Label yearLowLabel;
+    @FXML
+    private Label volumeLabel;
+    @FXML
+    private Label averageVolumeLabel;
+    @FXML
+    private Label marketCapLabel;
+    @FXML
+    private Label PERatioLabel;
+    @FXML
+    private Label divYieldLabel;
 
     // Reference to the main application.
     private MainApp mainApp;
@@ -53,16 +70,18 @@ public class StockOverviewController {
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
-        firstNameColumn.setCellValueFactory(
+        stockColumn.setCellValueFactory(
                 cellData -> cellData.getValue().stockNameProperty());
-        lastNameColumn.setCellValueFactory(
+        priceColumn.setCellValueFactory(
                 cellData -> cellData.getValue().priceProperty());
+        sharesColumn.setCellValueFactory(
+        		cellData-> cellData.getValue().sharesProperty());
 
         // Clear person details.
         showPersonDetails(null);
 
         // Listen for selection changes and show the person details when changed.
-        personTable.getSelectionModel().selectedItemProperty().addListener(
+        stockTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
     
@@ -77,7 +96,7 @@ public class StockOverviewController {
         this.mainApp = mainApp;
 
         // Add observable list data to the table
-        personTable.setItems(mainApp.getPersonData());
+        stockTable.setItems(mainApp.getPersonData());
     }
     
     
@@ -87,24 +106,38 @@ public class StockOverviewController {
      * 
      * @param person the person or null
      */
-    private void showPersonDetails(Stock person) {
-        if (person != null) {
-            // Fill the labels with info from the person object.
-            firstNameLabel.setText(person.getPrice());
-            lastNameLabel.setText(person.getAverageVolume());
-            streetLabel.setText(person.getVolume());
-            postalCodeLabel.setText(person.getDivYield());
-            cityLabel.setText(person.getOpen());
-            birthdayLabel.setText(person.getTodayHigh());
-            // birthdayLabel.setText(...);
+    private void showPersonDetails(Stock myStock) {
+        if (myStock != null) {
+            // Fill the labels with info from the stock object.
+        	stockLabel.setText(myStock.getStockName());
+        	priceLabel.setText(myStock.getPrice());
+        	sharesLabel.setText(myStock.getShares());
+            openLabel.setText(myStock.getOpen());
+            todayHighLabel.setText(myStock.getTodayHigh());
+            todayLowLabel.setText(myStock.getTodayLow());
+            yearHighLabel.setText(myStock.getYearHigh());
+            yearLowLabel.setText(myStock.getYearLow());
+            volumeLabel.setText(myStock.getVolume());
+            averageVolumeLabel.setText(myStock.getAverageVolume());
+            marketCapLabel.setText(myStock.getMarketCap());
+            PERatioLabel.setText(myStock.getPERatio());
+            divYieldLabel.setText(myStock.getDivYield());
+
         } else {
             // Person is null, remove all the text.
-            firstNameLabel.setText("");
-            lastNameLabel.setText("");
-            streetLabel.setText("");
-            postalCodeLabel.setText("");
-            cityLabel.setText("");
-            birthdayLabel.setText("");
+        	stockLabel.setText("");
+        	priceLabel.setText("");
+        	sharesLabel.setText("");
+            openLabel.setText("");
+            todayHighLabel.setText("");
+            todayLowLabel.setText("");
+            yearHighLabel.setText("");
+            yearLowLabel.setText("");
+            volumeLabel.setText("");
+            averageVolumeLabel.setText("");
+            marketCapLabel.setText("");
+            PERatioLabel.setText("");
+            divYieldLabel.setText("");
         }
     }
     
@@ -113,9 +146,9 @@ public class StockOverviewController {
      */
     @FXML
     private void handleDeletePerson() {
-        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+        int selectedIndex = stockTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            personTable.getItems().remove(selectedIndex);
+            stockTable.getItems().remove(selectedIndex);
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);
@@ -147,7 +180,7 @@ public class StockOverviewController {
      */
     @FXML
     private void handleEditPerson() {
-        Stock selectedPerson = personTable.getSelectionModel().getSelectedItem();
+        Stock selectedPerson = stockTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             boolean okClicked = mainApp.showStockPurchaseDialog(selectedPerson);
             if (okClicked) {

@@ -166,7 +166,7 @@ public class Stock {
         return averageVolume;
     }
     
-    public String getMarcketCap() {
+    public String getMarketCap() {
         return marketCap.get();
     }
 
@@ -200,10 +200,5 @@ public class Stock {
 
     public StringProperty divYieldProperty() {
         return divYield;
-    }
- 
-    
-
-  
-   
+    }   
 }

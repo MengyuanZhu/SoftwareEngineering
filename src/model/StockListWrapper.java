@@ -10,17 +10,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author mzhu7
  *
  */
-@XmlRootElement(name = "persons")
+@XmlRootElement(name = "stocks")
 public class StockListWrapper {
 
-    private List<Stock> persons;
+    private List<Stock> stocks;
 
-    @XmlElement(name = "person")
+    @XmlElement(name = "stock")
     public List<Stock> getPersons() {
-        return persons;
+        return stocks;
     }
 
-    public void setPersons(List<Stock> persons) {
-        this.persons = persons;
+    public void setPersons(List<Stock> stocks) {
+        this.stocks = stocks;
     }
 }
