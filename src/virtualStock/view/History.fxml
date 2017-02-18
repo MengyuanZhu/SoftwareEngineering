@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="virtualStock.view.HistoryController">
+   <children>
+      <ComboBox layoutX="25.0" layoutY="26.0" prefWidth="150.0" promptText="Past 30 days" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <TableView layoutX="25.0" layoutY="67.0" prefHeight="219.0" prefWidth="335.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Stock" />
+          <TableColumn prefWidth="67.0" text="Sell/Buy" />
+            <TableColumn prefWidth="67.0" text="Price" />
+            <TableColumn prefWidth="77.0" text="Date" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

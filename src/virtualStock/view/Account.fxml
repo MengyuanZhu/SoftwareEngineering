@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Arc?>
+
+<AnchorPane prefHeight="300.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.view.AccountController">
+   <children>
+      <Arc fill="#1faaff" layoutX="163.0" layoutY="180.0" length="270.0" radiusX="61.0" radiusY="59.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="51.0" layoutY="32.0" text="Portfolio value" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0" />
+      <Label layoutX="173.0" layoutY="32.0" text="\$1000" AnchorPane.topAnchor="25.0" />
+      <Label layoutX="51.0" layoutY="71.0" text="Portfolio value represents the total value of all the holdings in your account, incluidng cash." AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="60.0" />
+      <Label layoutX="275.0" layoutY="143.0" text="Stocks" AnchorPane.topAnchor="120.0" />
+      <Label layoutX="275.0" layoutY="200.0" text="Cash" AnchorPane.topAnchor="160.0" />
+      <Label layoutX="377.0" layoutY="143.0" text="\$750" AnchorPane.topAnchor="120.0" />
+      <Label layoutX="377.0" layoutY="200.0" text="\$250" AnchorPane.leftAnchor="377.0" AnchorPane.topAnchor="160.0" />
+      <ButtonBar layoutX="241.0" layoutY="239.0" prefHeight="40.0" prefWidth="298.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="25.0">
+        <buttons>
+          <Button mnemonicParsing="false" text="OK" />
+            <Button mnemonicParsing="false" text="WITHDRAW FUNDS" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>
