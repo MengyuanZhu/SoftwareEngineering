@@ -13,8 +13,8 @@
    <children>
       <ButtonBar layoutX="94.0" layoutY="146.0" prefHeight="40.0" prefWidth="163.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
         <buttons>
-          <Button mnemonicParsing="false" text="Sign in" />
-            <Button mnemonicParsing="false" text="Register" />
+          <Button fx:id="signInButton" mnemonicParsing="false" text="Sign in" />
+            <Button fx:id="registerButton" mnemonicParsing="false" text="Register" />
         </buttons>
       </ButtonBar>
       <GridPane layoutX="12.0" layoutY="24.0" prefHeight="104.0" prefWidth="276.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -29,8 +29,8 @@
          <children>
             <Label text="Username:" />
             <Label text="Password: " GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="usernameButton" GridPane.columnIndex="1" />
+            <TextField fx:id="passwordButton" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

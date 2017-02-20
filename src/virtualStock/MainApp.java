@@ -23,7 +23,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import virtualStock.model.Stock;
 import virtualStock.model.StockListWrapper;
-import virtualStock.view.StatisticsController;
+import virtualStock.view.PortfolioController;
 import virtualStock.view.StockPurchaseController;
 import virtualStock.view.StockOverviewController;
 import virtualStock.view.RootLayoutController;
@@ -330,9 +330,6 @@ public class MainApp extends Application {
 	}
 	
 	
-
-
-	
 	/**
 	 * Initializes the root layout and tries to load the last opened
 	 * person file.
@@ -368,23 +365,45 @@ public class MainApp extends Application {
 	/**
 	 * Opens a dialog to show birthday statistics.
 	 */
-	public void showStatistics() {
+	public void showPortfolio() {
 	    try {
 	        // Load the fxml file and create a new stage for the popup.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("view/Statistics.fxml"));
+	        loader.setLocation(MainApp.class.getResource("view/Portfolio.fxml"));
 	        AnchorPane page = (AnchorPane) loader.load();
 	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("Birthday Statistics");
+	        dialogStage.setTitle("Portfolio");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
 
 	        // Set the persons into the controller.
-	        StatisticsController controller = loader.getController();
+	        PortfolioController controller = loader.getController();
 	        controller.setPersonData(personData);
 
+	        dialogStage.show();
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	/**
+	 * Opens a dialog to show birthday statistics.
+	 */
+	public void showSignUp() {
+	    try {
+	        // Load the fxml file and create a new stage for the popup.
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("view/SignUp.fxml"));
+	        AnchorPane page = (AnchorPane) loader.load();
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("SignUp");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
 	        dialogStage.show();
 
 	    } catch (IOException e) {
@@ -420,7 +439,7 @@ public class MainApp extends Application {
 	        e.printStackTrace();
 	    }
 	}
-	
+
 	
 	
 }

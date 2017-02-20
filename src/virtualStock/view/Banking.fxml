@@ -16,22 +16,22 @@
                <children>
                   <VBox layoutX="6.0" layoutY="-1.0" prefHeight="200.0" prefWidth="161.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Transfer to Virtual Stock">
+                        <Button fx:id="transferToVSButton" mnemonicParsing="false" prefWidth="150.0" text="Transfer to Virtual Stock">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Transfer to your bank">
+                        <Button fx:id="transferToBankButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Transfer to your bank">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Automatic deposits">
+                        <Button fx:id="automaticDepositButton" mnemonicParsing="false" prefWidth="150.0" text="Automatic deposits">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Link account">
+                        <Button fx:id="linkAccountButton" mnemonicParsing="false" prefWidth="150.0" text="Link account">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -43,7 +43,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="254.0">
                <children>
                   <Label layoutX="7.0" layoutY="14.0" text="Linked accounts" />
-                  <ListView layoutX="7.0" layoutY="40.0" prefHeight="133.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0" />
+                  <ListView fx:id="linkedAccountList" layoutX="7.0" layoutY="40.0" prefHeight="133.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0" />
                </children>
             </AnchorPane>
         </items>

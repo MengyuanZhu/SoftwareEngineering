@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="virtualStock.view.SettingController">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.view.SettingController">
    <children>
       <GridPane layoutX="115.0" layoutY="155.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
@@ -30,13 +29,13 @@
             <Label text="Email" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Label text="Phone Number" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Label text="Address" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" text="Update" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" text="Logout" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <TextField fx:id="accountTextField" GridPane.columnIndex="1" />
+            <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="addressTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="updateButton" mnemonicParsing="false" text="Update" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <Button fx:id="logoutButton" mnemonicParsing="false" text="Logout" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </children>

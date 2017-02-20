@@ -7,7 +7,20 @@ import java.util.Locale;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class SignInController {
+	@FXML
+	private Button signInButton;
+	
+	@FXML
+	private Button registerButton;
+	
+	@FXML
+	private TextField usernameButton;
+	
+	@FXML
+	private TextField passwordButton;
 
 }

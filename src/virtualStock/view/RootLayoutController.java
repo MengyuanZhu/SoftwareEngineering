@@ -42,6 +42,9 @@ public class RootLayoutController {
      */
     @FXML
     private void handleSignUp() {
+    	mainApp.showSignUp();
+    	
+    	/**
         FileChooser fileChooser = new FileChooser();
 
         // Set extension filter
@@ -55,6 +58,7 @@ public class RootLayoutController {
         if (file != null) {
             mainApp.loadPersonDataFromFile(file);
         }
+        */
     }
 
     /**
@@ -121,7 +125,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleShowPortfolio() {
-      mainApp.showStatistics();
+      mainApp.showPortfolio();
     }
     
     

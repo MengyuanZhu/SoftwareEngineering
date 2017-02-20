@@ -15,7 +15,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleSignUp" text="Sign up" />
                   <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
                   <MenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save as..." />
-              <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Sign out" />
+              <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Account">
