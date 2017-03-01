@@ -68,7 +68,7 @@ public class PortfolioController {
      * 
      * @param persons
      */
-    public void setPersonData(List<Stock> persons) {
+    public void setStockData(List<Stock> persons) {
         /** Count the number of people having their birthday in a specific month.
         int[] monthCounter = new int[12];
         for (Stock p : persons) {

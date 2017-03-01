@@ -16,11 +16,11 @@ public class StockListWrapper {
     private List<Stock> stocks;
 
     @XmlElement(name = "stock")
-    public List<Stock> getPersons() {
+    public List<Stock> getStocks() {
         return stocks;
     }
 
-    public void setPersons(List<Stock> stocks) {
+    public void setStocks(List<Stock> stocks) {
         this.stocks = stocks;
     }
 }

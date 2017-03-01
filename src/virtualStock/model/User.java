@@ -18,6 +18,14 @@ public class User {
     private final StringProperty address;
     private final StringProperty ssn;
     private final ObjectProperty<LocalDate> birthday;
+    private final StringProperty phoneNumber;
+    private final StringProperty address2;
+    private final StringProperty emailAddress;
+    private final StringProperty bankRouting;
+    private final StringProperty bankAccount;
+    private final StringProperty cash;
+    
+    
 
     /**
      * Default constructor.
@@ -33,8 +41,23 @@ public class User {
         this.address = new SimpleStringProperty("some street");
         this.ssn = new SimpleStringProperty("666-66-6666");
         this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1990, 5, 24));
+        this.phoneNumber = new SimpleStringProperty("404-434-0000");
+        this.address2 = new SimpleStringProperty("some apartment");
+        this.emailAddress = new SimpleStringProperty("mzhu7@gsu.edu");
+        this.bankRouting = new SimpleStringProperty("000000");
+        this.bankAccount = new SimpleStringProperty("123456");
+        this.cash = new SimpleStringProperty("250.00");
     }
     
+    
+    
+    public String getPhoneNumber() {
+        return phoneNumber.get();
+    }
+
+    public void setPhoneNumber(String firstName) {
+        this.phoneNumber.set(firstName);
+    }
 
     public String getFirstName() {
         return firstName.get();

@@ -38,7 +38,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ObservableList<Stock> personData = FXCollections.observableArrayList();
+    private ObservableList<Stock> stockData = FXCollections.observableArrayList();
 
 
     @Override
@@ -156,13 +156,13 @@ public class MainApp extends Application {
     
     public void showStockOverview() {
         try {
-            // Load person overview.
+            
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/StockOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane stockOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            rootLayout.setCenter(stockOverview);
 
             // Give the controller access to the main app.
             StockOverviewController controller = loader.getController();
@@ -173,14 +173,7 @@ public class MainApp extends Application {
         }
     }
     
-    /**
-     * Opens a dialog to edit details for the specified person. If the user
-     * clicks OK, the changes are saved into the provided person object and true
-     * is returned.
-     * 
-     * @param person the person object to be edited
-     * @return true if the user clicked OK, false otherwise.
-     */
+    
     public boolean showStockPurchaseDialog(Stock myStock) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -196,7 +189,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Set the person into the controller.
+            // Set the stock into the controller.
             StockPurchaseController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setStock(myStock);
@@ -224,17 +217,11 @@ public class MainApp extends Application {
         launch(args);
     }
     
-    public ObservableList<Stock> getPersonData() {
-        return personData;
+    public ObservableList<Stock> getStockData() {
+        return stockData;
     }
     
-    /**
-     * Returns the person file preference, i.e. the file that was last opened.
-     * The preference is read from the OS specific registry. If no such
-     * preference can be found, null is returned.
-     * 
-     * @return
-     */
+    
     public File getPersonFilePath() {
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         String filePath = prefs.get("filePath", null);
@@ -273,7 +260,7 @@ public class MainApp extends Application {
 	 * 
 	 * @param file
 	 */
-	public void loadPersonDataFromFile(File file) {
+	public void loadStockDataFromFile(File file) {
 	    try {
 	        JAXBContext context = JAXBContext
 	                .newInstance(StockListWrapper.class);
@@ -282,8 +269,8 @@ public class MainApp extends Application {
 	        // Reading XML from the file and unmarshalling.
 	        StockListWrapper wrapper = (StockListWrapper) um.unmarshal(file);
 	
-	        personData.clear();
-	        personData.addAll(wrapper.getPersons());
+	        stockData.clear();
+	        stockData.addAll(wrapper.getStocks());
 	
 	        // Save the file path to the registry.
 	        setPersonFilePath(file);
@@ -312,7 +299,7 @@ public class MainApp extends Application {
 	
 	        // Wrapping our person data.
 	        StockListWrapper wrapper = new StockListWrapper();
-	        wrapper.setPersons(personData);
+	        wrapper.setStocks(stockData);
 	
 	        // Marshalling and saving XML to the file.
 	        m.marshal(wrapper, file);
@@ -358,7 +345,7 @@ public class MainApp extends Application {
 	    // Try to load last opened person file.
 	    File file = getPersonFilePath();
 	    if (file != null) {
-	        loadPersonDataFromFile(file);
+	        loadStockDataFromFile(file);
 	    }
 	}
 	
@@ -378,9 +365,9 @@ public class MainApp extends Application {
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
 
-	        // Set the persons into the controller.
+	        
 	        PortfolioController controller = loader.getController();
-	        controller.setPersonData(personData);
+	        controller.setStockData(stockData);
 
 	        dialogStage.show();
 
@@ -429,7 +416,7 @@ public class MainApp extends Application {
 	        dialogStage.setScene(scene);
 
 	        StockDayController controller = loader.getController();
-	        // Set the persons into the controller.
+	     
 	        
 	        controller.setStockQuote("MSFT");
 

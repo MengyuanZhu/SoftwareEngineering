@@ -78,11 +78,11 @@ public class StockOverviewController {
         		cellData-> cellData.getValue().sharesProperty());
 
         // Clear person details.
-        showPersonDetails(null);
+        showStockDetails(null);
 
         // Listen for selection changes and show the person details when changed.
         stockTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showPersonDetails(newValue));
+                (observable, oldValue, newValue) -> showStockDetails(newValue));
     }
     
     
@@ -96,7 +96,7 @@ public class StockOverviewController {
         this.mainApp = mainApp;
 
         // Add observable list data to the table
-        stockTable.setItems(mainApp.getPersonData());
+        stockTable.setItems(mainApp.getStockData());
     }
     
     
@@ -106,7 +106,7 @@ public class StockOverviewController {
      * 
      * @param person the person or null
      */
-    private void showPersonDetails(Stock myStock) {
+    private void showStockDetails(Stock myStock) {
         if (myStock != null) {
             // Fill the labels with info from the stock object.
         	stockLabel.setText(myStock.getStockName());
@@ -170,7 +170,7 @@ public class StockOverviewController {
         Stock tempPerson = new Stock();
         boolean okClicked = mainApp.showStockPurchaseDialog(tempPerson);
         if (okClicked) {
-            mainApp.getPersonData().add(tempPerson);
+            mainApp.getStockData().add(tempPerson);
         }
     }
 
@@ -179,12 +179,12 @@ public class StockOverviewController {
      * details for the selected person.
      */
     @FXML
-    private void handleEditPerson() {
+    private void handleEditStock() {
         Stock selectedPerson = stockTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             boolean okClicked = mainApp.showStockPurchaseDialog(selectedPerson);
             if (okClicked) {
-                showPersonDetails(selectedPerson);
+                showStockDetails(selectedPerson);
             }
 
         } else {

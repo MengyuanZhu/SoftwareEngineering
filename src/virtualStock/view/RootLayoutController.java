@@ -32,7 +32,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleSignIn() {
-        mainApp.getPersonData().clear();
+        mainApp.getStockData().clear();
         mainApp.setPersonFilePath(null);
         mainApp.showSignIn();
     }
