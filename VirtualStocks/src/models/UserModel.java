@@ -32,7 +32,7 @@ public class UserModel {
 		this.lastName = lastName;
 	}
 	public String getFullName(){
-		fullName = firstName + lastName;
+		fullName = firstName + " " + lastName;
 		return fullName;
 	}
 	public int getUserId(){

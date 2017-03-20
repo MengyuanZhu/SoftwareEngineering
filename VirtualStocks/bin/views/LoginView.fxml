@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   <children>
+      <Text layoutX="106.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="87.76953125">
+         <font>
+            <Font name="AppleGothic Regular" size="18.0" />
+         </font>
+      </Text>
+      <TextField id="username" fx:id="usernameText" focusTraversable="false" layoutX="67.0" layoutY="138.0" onMouseClicked="#handleUsername" promptText="Username" />
+      <PasswordField id="password" fx:id="passwordText" focusTraversable="false" layoutX="66.0" layoutY="181.0" onMouseClicked="#handlePassword" promptText="Password" />
+      <Button fx:id="signinButton" defaultButton="true" layoutX="75.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleLogin" text="Sign In" />
+      <Button fx:id="signupButton" layoutX="158.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleSignup" text="Sign Up" />
+      <Text layoutX="67.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Virtual Stock" textAlignment="CENTER">
+         <font>
+            <Font name="Avenir Black" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="141.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exchange">
+         <font>
+            <Font name="Avenir Roman" size="22.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

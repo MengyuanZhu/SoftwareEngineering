@@ -53,30 +53,36 @@ public class YahooDataParser {
         }
         // Yahoo Stocks CSV Parser
         YahooStockModel model = new YahooStockModel();
-        model.setTicker(getValue(data.get(1)));
-        model.setCompanyName(getValue(data.get(2)));
-        model.setExchangeName(getValue(data.get(3)));
-        model.setUnit(getValue(data.get(4)));
-        model.setTimeZone(getValue(data.get(5)));
-        model.setCurrency(getValue(data.get(6)));
-        model.setGmtOffSet(Integer.parseInt(getValue(data.get(7))));
-        model.setPreviousClose(Double.parseDouble(getValue(data.get(8))));
-        model.setMinTimeStamp((Long.parseLong(getValue(data.get(9)).split(",")[0])));
-        model.setMaxTimeStamp((Long.parseLong(getValue(data.get(9)).split(",")[1])));
-        for(int i = 0; i < data.get(10).split(",").length-1; i++){
-        	model.addLabel(Long.parseLong(getValue(data.get(10).split(",")[i])));
+        if(!error){
+        	try{
+		        model.setTicker(getValue(data.get(1)));
+		        model.setCompanyName(getValue(data.get(2)));
+		        model.setExchangeName(getValue(data.get(3)));
+		        model.setUnit(getValue(data.get(4)));
+		        model.setTimeZone(getValue(data.get(5)));
+		        model.setCurrency(getValue(data.get(6)));
+		        model.setGmtOffSet(Integer.parseInt(getValue(data.get(7))));
+		        model.setPreviousClose(Double.parseDouble(getValue(data.get(8))));
+		        model.setMinTimeStamp((Long.parseLong(getValue(data.get(9)).split(",")[0])));
+		        model.setMaxTimeStamp((Long.parseLong(getValue(data.get(9)).split(",")[1])));
+		        for(int i = 0; i < data.get(10).split(",").length-1; i++){
+		        	model.addLabel(Long.parseLong(getValue(data.get(10).split(",")[i])));
+		        }
+		        for(int i = 17; i < data.size(); i++){
+		        	Volume volume = new Volume();
+		        	volume.setTimeStamp(Long.parseLong(data.get(i).split(",")[0]));
+		        	volume.setClose(Double.parseDouble(data.get(i).split(",")[1]));
+		        	volume.setHigh(Double.parseDouble(data.get(i).split(",")[2]));
+		        	volume.setLow(Double.parseDouble(data.get(i).split(",")[3]));
+		        	volume.setOpen(Double.parseDouble(data.get(i).split(",")[4]));
+		        	volume.setVolume(Integer.parseInt(data.get(i).split(",")[5]));
+		        	model.addSeries(volume);
+		        }
+        	}
+        	catch(Exception e){
+        		model = new YahooStockModel();
+        	}
         }
-        for(int i = 17; i < data.size(); i++){
-        	Volume volume = new Volume();
-        	volume.setTimeStamp(Long.parseLong(data.get(i).split(",")[0]));
-        	volume.setClose(Double.parseDouble(data.get(i).split(",")[1]));
-        	volume.setHigh(Double.parseDouble(data.get(i).split(",")[2]));
-        	volume.setLow(Double.parseDouble(data.get(i).split(",")[3]));
-        	volume.setOpen(Double.parseDouble(data.get(i).split(",")[4]));
-        	volume.setVolume(Integer.parseInt(data.get(i).split(",")[5]));
-        	model.addSeries(volume);
-        }
-//        model.printStockModel();
         return model;
 	}
 }

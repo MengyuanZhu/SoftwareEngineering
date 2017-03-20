@@ -175,4 +175,47 @@ public class DatabaseHelper {
 		}
 		return found;
 	}
+	public int getUserId(String username){
+		int userId = 0;
+		try{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
+			String query = "SELECT Id FROM Users WHERE Username = ?;";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setString(1, username);
+			ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+            	userId = rs.getInt(1);
+            }
+            connection.close();
+		} catch(Exception e){
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		return userId;
+	}
+	public UserModel getUserInfo(int userId){
+		UserModel user = new UserModel();
+		try{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
+			String query = "SELECT * FROM Users WHERE Id = ?;";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, userId);
+			ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+            	user.setUserId(rs.getInt(1));
+        		user.setFirstName(rs.getString(2));
+        		user.setLastName(rs.getString(3));
+        		user.setUserName(rs.getString(4));
+        		user.setTotalStockAmount(rs.getDouble(6));
+        		user.setEmail(rs.getString(7));
+            }
+            connection.close();
+		} catch(Exception e){
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		return user;
+	}
 }
