@@ -1,4 +1,4 @@
-package virtualStock.view;
+package virtualStock.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Arc?>
 
-<AnchorPane prefHeight="300.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.view.AccountController">
+<AnchorPane prefHeight="300.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.controller.AccountController">
    <children>
       <Arc fill="#1faaff" layoutX="163.0" layoutY="180.0" length="270.0" radiusX="61.0" radiusY="59.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="100.0" />
       <Label layoutX="51.0" layoutY="32.0" text="Portfolio value" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0" />

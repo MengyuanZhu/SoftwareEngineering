@@ -27,12 +27,12 @@ public class Stock {
      * Default constructor.
      */
     public Stock() {
-        this(null);
+        this(null,null);
     }
     
-    public Stock(String stockName) {
+    public Stock(String stockName, String price) {
         this.stockName = new SimpleStringProperty(stockName);
-        this.price = new SimpleStringProperty("");
+        this.price = new SimpleStringProperty(price);
         this.shares = new SimpleStringProperty("");
         this.open = new SimpleStringProperty("");
         this.todayHigh = new SimpleStringProperty("");

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane minHeight="420.0" minWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.view.SignUpController">
+<AnchorPane minHeight="420.0" minWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.controller.SignUpController">
    <children>
       <GridPane layoutX="11.0" layoutY="25.0" prefHeight="346.0" prefWidth="239.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="25.0">
         <columnConstraints>
@@ -41,16 +41,16 @@
             <Label text="Address 1" GridPane.rowIndex="5" />
             <Label text="Address 2 (optional)" GridPane.rowIndex="6" />
             <Label text="Bank Routing Number" GridPane.rowIndex="7" />
-            <TextField fx:id="firstNameLabel" GridPane.columnIndex="1" />
-            <TextField fx:id="lastNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="accoutLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="passwordLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="confirmPasswordLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="address1Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="address2Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="routingNumberLabel" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField fx:id="initialDepositLabel" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <TextField fx:id="accoutNumberLabel" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="firstNameTextField" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="accoutTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="confirmPasswordTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="address1TextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="address2TextField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="routingNumberTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="initialDepositTextField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="accoutNumberTextField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <Label text="Bank Account Number" GridPane.rowIndex="8" />
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
               <buttons>
@@ -60,8 +60,8 @@
             </ButtonBar>
             <Label text="Email Address" GridPane.rowIndex="10" />
             <Label text="Phone Number" GridPane.rowIndex="11" />
-            <TextField fx:id="emailLabel" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <TextField fx:id="phoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <TextField fx:id="phoneTextField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
          </children>
       </GridPane>
    </children>

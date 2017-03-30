@@ -1,27 +1,33 @@
-package virtualStock.view;
+package virtualStock.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import virtualStock.model.Stock;
-import virtualStock.util.DateUtil;
+import virtualStock.model.YahooStockModel;
+
 
 /**
  * @author mzhu7
  *
  */
-public class StockPurchaseController {
+public class StockPurchaseDialogController {
 
     @FXML
-    private TextField stockNameField;
-    @FXML
     private TextField sharesField;
+    @FXML
+    private Label priceLabel;
+    @FXML 
+    private Label costLabel;
+    
 
     private Stage dialogStage;
     private Stock myStock;
     private boolean okClicked = false;
+    
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -29,6 +35,9 @@ public class StockPurchaseController {
      */
     @FXML
     private void initialize() {
+    	
+    	
+    	
     }
 
     /**
@@ -45,9 +54,11 @@ public class StockPurchaseController {
      * 
      * @param person
      */
-    public void setStock(Stock stock) {
-        this.myStock = stock;    
-        sharesField.setText(myStock.getShares());
+    public void setStock(YahooStockModel stock) {
+        //this.myStock = stock;    
+        //sharesField.setText(myStock.getShares());
+        priceLabel.setText(stock.getCurrency());
+        
    
     }
 

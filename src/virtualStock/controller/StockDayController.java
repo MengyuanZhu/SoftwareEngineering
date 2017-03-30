@@ -1,9 +1,6 @@
-package virtualStock.view;
+package virtualStock.controller;
 
 import java.io.IOException;
-import java.text.DateFormatSymbols;
-import java.util.Arrays;
-import java.util.Locale;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,11 +1,12 @@
-package virtualStock.view;
+package virtualStock.controller;
 
+import virtualStock.util.YahooDataParser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import virtualStock.model.YahooStockModel;
 import virtualStock.MainApp;
 import virtualStock.model.Stock;
-import virtualStock.util.DateUtil;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -141,36 +142,21 @@ public class StockOverviewController {
         }
     }
     
-    /**
-     * Called when the user clicks on the delete button.
-     */
-    @FXML
-    private void handleDeletePerson() {
-        int selectedIndex = stockTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            stockTable.getItems().remove(selectedIndex);
-        } else {
-            // Nothing selected.
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
-
-            alert.showAndWait();
-        }
-    }
-    
+   
     /**
      * Called when the user clicks the new button. Opens a dialog to edit
      * details for a new person.
      */
     @FXML
-    private void handleNewPerson() {
-        Stock tempPerson = new Stock();
-        boolean okClicked = mainApp.showStockPurchaseDialog(tempPerson);
+    private void handleBuyStock() {
+        //Stock tempStock = new Stock();
+        YahooDataParser yahooParser = new YahooDataParser();
+    	YahooStockModel stock = yahooParser.getJSON("MSFT");
+        boolean okClicked = mainApp.showStockPurchaseDialog(stock);
+        
         if (okClicked) {
-            mainApp.getStockData().add(tempPerson);
+        	
+            //mainApp.getStockData().add(tempStock);
         }
     }
 
@@ -179,13 +165,13 @@ public class StockOverviewController {
      * details for the selected person.
      */
     @FXML
-    private void handleEditStock() {
+    private void handleSellStock() {
         Stock selectedPerson = stockTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
-            boolean okClicked = mainApp.showStockPurchaseDialog(selectedPerson);
-            if (okClicked) {
-                showStockDetails(selectedPerson);
-            }
+            //boolean okClicked = mainApp.showStockPurchaseDialog(selectedPerson);
+            //if (okClicked) {
+            //    showStockDetails(selectedPerson);
+            //}
 
         } else {
             // Nothing selected.

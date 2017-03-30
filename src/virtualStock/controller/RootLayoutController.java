@@ -1,11 +1,11 @@
-package virtualStock.view;
+package virtualStock.controller;
 
-import java.io.File;
+
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.FileChooser;
+
 import virtualStock.MainApp;
 
 
@@ -33,7 +33,7 @@ public class RootLayoutController {
     @FXML
     private void handleSignIn() {
         mainApp.getStockData().clear();
-        mainApp.setPersonFilePath(null);
+   
         mainApp.showSignIn();
     }
 
@@ -43,22 +43,6 @@ public class RootLayoutController {
     @FXML
     private void handleSignUp() {
     	mainApp.showSignUp();
-    	
-    	/**
-        FileChooser fileChooser = new FileChooser();
-
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
-
-        // Show open file dialog
-        File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
-
-        if (file != null) {
-            mainApp.loadPersonDataFromFile(file);
-        }
-        */
     }
 
     /**
@@ -67,12 +51,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleSave() {
-        File personFile = mainApp.getPersonFilePath();
-        if (personFile != null) {
-            mainApp.savePersonDataToFile(personFile);
-        } else {
-            handleSaveAs();
-        }
+
     }
 
     /**
@@ -80,23 +59,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleSaveAs() {
-        FileChooser fileChooser = new FileChooser();
-
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
-
-        // Show save file dialog
-        File file = fileChooser.showSaveDialog(mainApp.getPrimaryStage());
-
-        if (file != null) {
-            // Make sure it has the correct extension
-            if (!file.getPath().endsWith(".xml")) {
-                file = new File(file.getPath() + ".xml");
-            }
-            mainApp.savePersonDataToFile(file);
-        }
+     
     }
 
     /**

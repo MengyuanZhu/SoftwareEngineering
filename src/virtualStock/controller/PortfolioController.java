@@ -1,4 +1,4 @@
-package virtualStock.view;
+package virtualStock.controller;
 
 import java.text.DateFormatSymbols;
 import java.util.Arrays;

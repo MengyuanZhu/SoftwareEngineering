@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.view.StockOverviewController">
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.controller.StockOverviewController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="162.0" layoutY="70.0" prefHeight="300.0" prefWidth="600.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -76,8 +76,8 @@
                   </GridPane>
                   <ButtonBar layoutX="138.0" layoutY="244.0" prefHeight="40.0" prefWidth="365.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                     <buttons>
-                      <Button mnemonicParsing="false" onAction="#handleNewPerson" text="Buy" />
-                        <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Sell" />
+                      <Button mnemonicParsing="false" onAction="#handleBuyStock" text="Buy" />
+                        <Button mnemonicParsing="false" onAction="#handleSellStock" text="Sell" />
                     </buttons>
                   </ButtonBar>
                </children>

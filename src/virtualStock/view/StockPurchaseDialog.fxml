@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.view.StockPurchaseController">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.controller.StockPurchaseDialogController">
    <children>
       <ButtonBar layoutX="206.0" layoutY="246.0" prefHeight="40.0" prefWidth="256.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="255.0">
         <buttons>
@@ -32,8 +32,8 @@
             <Label text="Shares" GridPane.rowIndex="1" />
             <TextField fx:id="sharesField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Estimated Cost" GridPane.rowIndex="2" />
-            <Label text="\$63.78" GridPane.columnIndex="1" />
-            <Label text="\$976.29 available" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="priceLabel" text="\$63.78" GridPane.columnIndex="1" />
+            <Label fx:id="costLabel" text="\$976.29 available" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
