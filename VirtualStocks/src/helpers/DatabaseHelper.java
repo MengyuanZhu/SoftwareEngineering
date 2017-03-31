@@ -20,11 +20,33 @@ import java.sql.*;
 
 import models.UserModel;
 
+/**
+ * DatabaseHelper is a helper class for all interactions with
+ * the SQLite database.
+ * This class includes the following functionality:
+ * <ul>
+ * <li>Establish connection to the database
+ * <li>Create Users table
+ * <li>Create Transactions table
+ * <li>Add users to the users table
+ * <li>Update users in the users table
+ * <li>Authenticate log in
+ * <li>Check for existing username to be used during signup
+ * </ul>
+ * @author      Sungjae Kim
+ */
+
 public class DatabaseHelper {
 	private static final String DATABASE_NAME = "portfolio.db";
 	Connection connection = null;
 	Statement stmt = null;
 	
+	/**
+	 * Establishes connection to the database.
+	 * Creates the "Users" and "Transactions" table if they do not exist.
+	 * Add a default test user into the database.
+	 *
+	 */
 	public void connect(){
 		try{
 			Class.forName("org.sqlite.JDBC");
@@ -44,8 +66,12 @@ public class DatabaseHelper {
 		user.setUserName("jaykim");
 		user.setEmail("jaykim@test.com");
 		user.setTotalStockAmount(350);
-		addUserToDb(user);
+		addUser(user);
 	}
+	/**
+	 * Creates the "Users" table in the database
+	 *
+	 */
 	public void createUsersTable(){
 		try{
 			stmt = connection.createStatement();
@@ -66,6 +92,10 @@ public class DatabaseHelper {
 		}
 		System.out.println("Table creation successful");
 	}
+	/**
+	 * Creates the "Transactions" table in the database
+	 *
+	 */
 	public void createTransactionsTable(){
 		try{
 			stmt = connection.createStatement();
@@ -89,7 +119,7 @@ public class DatabaseHelper {
 	 * @param  user  a user object containing the user information
 	 * @see         UserModel
 	 */
-	public void addUserToDb(UserModel user){
+	public void addUser(UserModel user){
 		try{
 			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
@@ -111,6 +141,34 @@ public class DatabaseHelper {
 			System.exit(0);
 		}
 		System.out.println("User added successfully");
+	}
+	/**
+	 * Updates user in the Users table.
+	 *
+	 * @param  userName  user name of the user
+	 * @param  firstName  first name of the user
+	 * @param  lastName  last name of the user
+	 * @param  email  email of the user
+	 * @param  password  password of the user
+	 */
+	public void updateUser(String userName, String firstName, String lastName, String password, String email){
+		try{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
+			String query = "UPDATE Users SET Firstname = ?, Lastname = ?, Password = ?, Email = ? WHERE Username = ?;";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setString(1, firstName);
+			statement.setString(2, lastName);
+			statement.setString(3, password);
+			statement.setString(4, email);
+			statement.setString(5, userName);
+			statement.executeUpdate();
+			connection.close();
+		} catch(Exception e){
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		System.out.println("User updated successfully");
 	}
 	/**
 	 * Adds transaction to the Transactions table.
@@ -136,6 +194,13 @@ public class DatabaseHelper {
 		}
 		System.out.println("Transaction added successfully");
 	}
+	/**
+	 * Authenticates user trying to log in.
+	 *
+	 * @param  username  user name of the user
+	 * @param  password  password of the user
+	 * @return true if the user is authenticated and false if not authenticated
+	 */
 	public boolean authenticateUser(String username, String password){
 		boolean found = false;
 		try{
@@ -156,6 +221,12 @@ public class DatabaseHelper {
 		}
 		return found;
 	}
+	/**
+	 * Checks to see if the username already exists in the users table.
+	 *
+	 * @param  username  user name of the user
+	 * @return true if the username is found and returns false if not found
+	 */
 	public boolean checkExistingUsername(String username){
 		boolean found = false;
 		try{
@@ -175,6 +246,12 @@ public class DatabaseHelper {
 		}
 		return found;
 	}
+	/**
+	 * Gets the userId of a user.
+	 *
+	 * @param  username  user name of the user
+	 * @return the userId of the user
+	 */
 	public int getUserId(String username){
 		int userId = 0;
 		try{
@@ -194,6 +271,13 @@ public class DatabaseHelper {
 		}
 		return userId;
 	}
+	/**
+	 * Get information on a user and parse into a UserModel object
+	 *
+	 * @param  userId  userId of the user
+	 * @return	a UserModel object associated with the userId
+	 * @see 	UserModel
+	 */
 	public UserModel getUserInfo(int userId){
 		UserModel user = new UserModel();
 		try{

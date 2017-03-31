@@ -29,11 +29,12 @@ public class MainController {
 	@FXML private Text userInfo;
 	@FXML private TextField stockSearchText;
 	private String username;
+	private UserModel user;
 	private DatabaseHelper dbHelper = new DatabaseHelper();
 
 	public void setUsername(String username){
 		this.username = username;
-		UserModel user = dbHelper.getUserInfo(dbHelper.getUserId(username));
+		user = dbHelper.getUserInfo(dbHelper.getUserId(username));
 		welcomeText.setText("Welcome, " + user.getFullName());
 		userInfo.setText("User ID: " + user.getUserId() + "\n\nUsername: " + user.getUserName() + "\n\nFirst Name: " + user.getFirstName() + "\n\nLast Name: " + user.getLastName() + "\n\nEmail: " + user.getEmail());
 	}
@@ -99,6 +100,8 @@ public class MainController {
 	        stage.initModality(Modality.APPLICATION_MODAL);
 	        stage.setTitle("VirtualStocks");
 	        stage.setScene(new Scene(root));  
+	        EditAccountController editController = fxmlLoader.<EditAccountController>getController();
+	        editController.setUser(user);
 	        stage.show();
 		} catch (IOException e) {
 	         e.printStackTrace();

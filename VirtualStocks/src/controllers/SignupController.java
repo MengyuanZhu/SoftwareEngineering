@@ -68,7 +68,7 @@ public class SignupController {
 		    newUser.setPassword(passwordText.getText()); //If going to be hashed, set this to hashed password.
 		    newUser.setTotalStockAmount(0); //Initialized to 0 because new user.
 		    newUser.setUserName(usernameText.getText());
-		    dbHelper.addUserToDb(newUser);
+		    dbHelper.addUser(newUser);
 		    Stage stage = (Stage) cancelButton.getScene().getWindow();
 		    stage.close();
 		}
@@ -108,6 +108,6 @@ public class SignupController {
 	public static boolean validateEmail(String email) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(email);
         return matcher.find();
-}
+	}
 	
 }
