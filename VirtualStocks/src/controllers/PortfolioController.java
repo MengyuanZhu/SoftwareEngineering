@@ -1,4 +1,4 @@
-package virtualStock.controller;
+package controllers;
 
 import java.text.DateFormatSymbols;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import virtualStock.model.Stock;
+
 
 /**
  * @author mzhu7
@@ -68,22 +68,5 @@ public class PortfolioController {
      * 
      * @param persons
      */
-    public void setStockData(List<Stock> persons) {
-        /** Count the number of people having their birthday in a specific month.
-        int[] monthCounter = new int[12];
-        for (Stock p : persons) {
-            int month = p.getBirthday().getMonthValue() - 1;
-            monthCounter[month]++;
-        }
-
-        XYChart.Series<String, Integer> series = new XYChart.Series<>();
-
-        // Create a XYChart.Data object for each month. Add it to the series.
-        for (int i = 0; i < monthCounter.length; i++) {
-            series.getData().add(new XYChart.Data<>(monthNames.get(i), monthCounter[i]));
-        }
-
-        barChart.getData().add(series);
-        */
-    }
+  
 }

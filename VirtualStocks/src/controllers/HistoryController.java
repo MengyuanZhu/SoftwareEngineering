@@ -1,4 +1,4 @@
-package virtualStock.controller;
+package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import virtualStock.model.Stock;
 
 public class HistoryController {
 	
@@ -19,7 +18,7 @@ public class HistoryController {
 	
 	@FXML
 	private ComboBox<String> dateRangeComboBox;
-	
+	/**
 	@FXML
 	private TableView<Stock> historyTableView;
 	
@@ -40,10 +39,7 @@ public class HistoryController {
 	//historyTableView.setItems(getStockData());
 	
 	
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
+    
     @FXML
     private void initialize() {
     	dateRangeComboBox.setItems(options);
@@ -59,7 +55,7 @@ public class HistoryController {
         return stockData;
     }
     
-
+    */
     
 	
 

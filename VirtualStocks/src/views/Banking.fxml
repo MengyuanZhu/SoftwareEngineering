@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualStock.controller.BankingController">
+   <children>
+      <SplitPane dividerPositions="0.4120603015075377" layoutX="111.0" layoutY="20.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="73.0">
+               <children>
+                  <VBox layoutX="6.0" layoutY="-1.0" prefHeight="200.0" prefWidth="161.0">
+                     <children>
+                        <Button fx:id="transferToVSButton" mnemonicParsing="false" prefWidth="150.0" text="Transfer to Virtual Stock">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="transferToBankButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Transfer to your bank">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="automaticDepositButton" mnemonicParsing="false" prefWidth="150.0" text="Automatic deposits">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="linkAccountButton" mnemonicParsing="false" prefWidth="150.0" text="Link account">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="254.0">
+               <children>
+                  <Label layoutX="7.0" layoutY="14.0" text="Linked accounts" />
+                  <ListView fx:id="linkedAccountList" layoutX="7.0" layoutY="40.0" prefHeight="133.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
