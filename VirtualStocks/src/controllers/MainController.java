@@ -107,6 +107,38 @@ public class MainController {
 	         e.printStackTrace();
 	    }
 	}
+	
+	@FXML public void handleHistory(ActionEvent event) {
+		try{
+	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/History.fxml"));
+	        Parent root = (Parent) fxmlLoader.load();
+	        Stage stage = new Stage();
+	        stage.initModality(Modality.APPLICATION_MODAL);
+	        stage.setTitle("VirtualStocks");
+	        stage.setScene(new Scene(root));  
+	        EditAccountController editController = fxmlLoader.<EditAccountController>getController();
+	        editController.setUser(user);
+	        stage.show();
+		} catch (IOException e) {
+	         e.printStackTrace();
+	    }
+	}
+	
+	@FXML public void handleBanking(ActionEvent event) {
+		try{
+	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/Banking.fxml"));
+	        Parent root = (Parent) fxmlLoader.load();
+	        Stage stage = new Stage();
+	        stage.initModality(Modality.APPLICATION_MODAL);
+	        stage.setTitle("VirtualStocks");
+	        stage.setScene(new Scene(root));  
+	        EditAccountController editController = fxmlLoader.<EditAccountController>getController();
+	        editController.setUser(user);
+	        stage.show();
+		} catch (IOException e) {
+	         e.printStackTrace();
+	    }
+	}
 
 	
 

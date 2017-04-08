@@ -13,8 +13,8 @@
             <Font name="AppleGothic Regular" size="18.0" />
          </font>
       </Text>
-      <TextField id="username" fx:id="usernameText" focusTraversable="false" layoutX="67.0" layoutY="138.0" onMouseClicked="#handleUsername" promptText="Username" />
-      <PasswordField id="password" fx:id="passwordText" focusTraversable="false" layoutX="66.0" layoutY="181.0" onMouseClicked="#handlePassword" promptText="Password" />
+      <TextField id="username" fx:id="usernameText" focusTraversable="false" layoutX="67.0" layoutY="138.0" onMouseClicked="#handleUsername" promptText="Username"  text="jaykim" />
+      <PasswordField id="password" fx:id="passwordText" focusTraversable="false" layoutX="66.0" layoutY="181.0" onMouseClicked="#handlePassword" promptText="Password" text="password" />
       <Button fx:id="signinButton" defaultButton="true" layoutX="75.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleLogin" text="Sign In" />
       <Button fx:id="signupButton" layoutX="158.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleSignup" text="Sign Up" />
       <Text layoutX="67.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Virtual Stock" textAlignment="CENTER">
