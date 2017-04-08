@@ -7,7 +7,6 @@ public class TransactionModel {
 	private Date boughtDate;
 	private int userId;
 	private  int numBought;
-	private String stockTicker;
 	
 	public int getTransactionId(){
 		return transactionId;
@@ -38,13 +37,5 @@ public class TransactionModel {
 	}
 	public void setNumBought(int num){
 		this.numBought = num;
-	}
-	
-	public String getStockTicker(){
-		return stockTicker;
-	}
-	
-	public void setStockTicker(String ticker){
-		this.stockTicker=ticker;
 	}
 }

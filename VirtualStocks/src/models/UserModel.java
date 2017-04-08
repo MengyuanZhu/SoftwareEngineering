@@ -9,7 +9,7 @@ public class UserModel {
 	private String fullName;
 	private String email;
 	private int userId;
-	private double totalStockAmount;
+	private double totalAmount;
 	private LinkedList<StockModel> stockPortfolio = new LinkedList<StockModel>();
 	
 	
@@ -52,13 +52,13 @@ public class UserModel {
 	}
 	public void buyStock(StockModel stock, int numOfStocks){
 		stockPortfolio.add(stock);
-		totalStockAmount += (stock.getPrice() * numOfStocks);
+		totalAmount += (stock.getPrice() * numOfStocks);
 	}
-	public double getTotalStockAmount(){
-		return totalStockAmount;
+	public double getTotalAmount(){
+		return totalAmount;
 	}
-	public void setTotalStockAmount(double amount){
-		this.totalStockAmount = amount;
+	public void setTotalAmount(double amount){
+		this.totalAmount = amount;
 	}
 	public String getEmail(){
 		return email;
