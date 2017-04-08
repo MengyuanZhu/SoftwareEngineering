@@ -17,7 +17,10 @@
 
 package helpers;
 import java.sql.*;
+import java.util.Date;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import models.UserModel;
 
 /**
@@ -48,25 +51,27 @@ public class DatabaseHelper {
 	 *
 	 */
 	public void connect(){
-		try{
-			Class.forName("org.sqlite.JDBC");
-			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
-		} catch(Exception e){
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
-			System.exit(0);
-		}
-		System.out.println("Connection successful");
+//		try{
+//			Class.forName("org.sqlite.JDBC");
+//			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
+//			connection.close();
+//		} catch(Exception e){
+//			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+//			System.exit(0);
+//		}
+//		System.out.println("Connection successful");
 		//TESTING:
 		createUsersTable();
-		createTransactionsTable();
-		UserModel user = new UserModel();
-		user.setFirstName("Jay");
-		user.setLastName("Kim");
-		user.setPassword("password");
-		user.setUserName("jaykim");
-		user.setEmail("jaykim@test.com");
-		user.setTotalStockAmount(350);
-		addUser(user);
+		createStockTransactionsTable();
+		createBankTransactionsTable();
+//		UserModel user = new UserModel();
+//		user.setFirstName("Jay");
+//		user.setLastName("Kim");
+//		user.setPassword("password");
+//		user.setUserName("jaykim");
+//		user.setEmail("jaykim@test.com");
+//		user.setTotalAmount(350);
+//		addUser(user);
 	}
 	/**
 	 * Creates the "Users" table in the database
@@ -74,6 +79,8 @@ public class DatabaseHelper {
 	 */
 	public void createUsersTable(){
 		try{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
 			stmt = connection.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS Users" + 
 						 "(Id 			INTEGER		 PRIMARY KEY		AUTOINCREMENT," + 
@@ -86,21 +93,25 @@ public class DatabaseHelper {
 						 ");";
 			stmt.executeUpdate(sql);
 			stmt.close();
+			connection.close();
 		} catch(Exception e){
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		System.out.println("Table creation successful");
+		System.out.println("User table creation successful");
 	}
 	/**
-	 * Creates the "Transactions" table in the database
+	 * Creates the "StockTransactions" table in the database
 	 *
 	 */
-	public void createTransactionsTable(){
+	public void createStockTransactionsTable(){
 		try{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
 			stmt = connection.createStatement();
-			String sql = "CREATE TABLE IF NOT EXISTS Transactions" +
+			String sql = "CREATE TABLE IF NOT EXISTS StockTransactions" +
 						 "(Id 				INTEGER		 PRIMARY KEY		AUTOINCREMENT," +
+						 " Stock 			TEXT				NOT NULL," +
 						 " Price 			DOUBLE				NOT NULL," +
 						 " Time				TIMESTAMP			NOT NULL," +
 						 " UserId			INTEGER				NOT NULL," +
@@ -108,10 +119,36 @@ public class DatabaseHelper {
 						 ");";
 			stmt.executeUpdate(sql);
 			stmt.close();
+			connection.close();
 		} catch(Exception e){
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
+		System.out.println("StockTransactions table creation successful");
+	}
+	/**
+	 * Creates the "BankTransactions" table in the database
+	 *
+	 */
+	public void createBankTransactionsTable(){
+		try{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
+			stmt = connection.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS BankTransactions" +
+						 "(Id 				INTEGER		 PRIMARY KEY		AUTOINCREMENT," +
+						 " UserId			INTEGER				NOT NULL," +
+						 " Amount 			DOUBLE				NOT NULL," +
+						 " Time				TIMESTAMP			NOT NULL" +
+						 ");";
+			stmt.executeUpdate(sql);
+			stmt.close();
+			connection.close();
+		} catch(Exception e){
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		System.out.println("BankTransactions table creation successful");
 	}
 	/**
 	 * Adds user to the Users table.
@@ -131,7 +168,7 @@ public class DatabaseHelper {
 			statement.setString(2, user.getLastName());
 			statement.setString(3, user.getUserName());
 			statement.setString(4, user.getPassword());
-			statement.setDouble(5, user.getTotalStockAmount());
+			statement.setDouble(5, user.getTotalAmount());
 			statement.setString(6, user.getEmail());
 			statement.setString(7, user.getUserName());
 			statement.executeUpdate();
@@ -171,7 +208,7 @@ public class DatabaseHelper {
 		System.out.println("User updated successfully");
 	}
 	/**
-	 * Adds transaction to the Transactions table.
+	 * Adds transaction to the StockTransactions table.
 	 *
 	 * @param  price  the price of the stock bought
 	 * @param  date  the time of transaction
@@ -180,7 +217,9 @@ public class DatabaseHelper {
 	 */
 	public void addTransactionToDb(double price, Timestamp date, int userId, int numStocks){
 		try{
-			String query = "INSERT INTO Transactions(Price, Time, UserId, NumberOfStocks) " + 
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
+			String query = "INSERT INTO StockTransactions(Price, Time, UserId, NumberOfStocks) " + 
 						   "VALUES(?, ?, ?, ?);";
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setDouble(1, price);
@@ -188,6 +227,7 @@ public class DatabaseHelper {
 			statement.setInt(3, userId);
 			statement.setInt(4, numStocks);
 			statement.executeUpdate();
+			connection.close();
 		} catch(Exception e){
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
@@ -219,6 +259,7 @@ public class DatabaseHelper {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
+		System.out.println("User authenticated successful");
 		return found;
 	}
 	/**
@@ -244,6 +285,7 @@ public class DatabaseHelper {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
+		System.out.println("Existing username checking successful");
 		return found;
 	}
 	/**
@@ -269,6 +311,7 @@ public class DatabaseHelper {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
+		System.out.println("Get UserId successful");
 		return userId;
 	}
 	/**
@@ -292,7 +335,7 @@ public class DatabaseHelper {
         		user.setFirstName(rs.getString(2));
         		user.setLastName(rs.getString(3));
         		user.setUserName(rs.getString(4));
-        		user.setTotalStockAmount(rs.getDouble(6));
+        		user.setTotalAmount(rs.getDouble(6));
         		user.setEmail(rs.getString(7));
             }
             connection.close();
@@ -300,6 +343,70 @@ public class DatabaseHelper {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
+		System.out.println("GetUserInfo successful");
 		return user;
+	}
+	public void addBankTransactionToDb(int userId, double amount){
+		try{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
+			double totalAmount = 0.0;
+			String query = "SELECT TotalAmount FROM Users WHERE Id = ?;";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, userId);
+			ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+            	totalAmount = rs.getDouble(1);
+            }
+			
+            double newAmount = totalAmount + amount;
+            if(newAmount >= 0){
+            	Timestamp date = new Timestamp(System.currentTimeMillis());
+    			query = "INSERT INTO BankTransactions(UserId, Amount, Time) " + 
+    						   "VALUES(?, ?, ?);";
+    			statement = connection.prepareStatement(query);
+    			statement.setInt(1, userId);
+    			statement.setDouble(2, amount);
+    			statement.setTimestamp(3, date);
+    			statement.executeUpdate();
+    			query = "UPDATE Users SET TotalAmount = ? WHERE Id = ?;";
+    			statement = connection.prepareStatement(query);
+    			statement.setDouble(1, newAmount);
+    			statement.setInt(2, userId);
+    			statement.executeUpdate();
+            }
+            else{
+    			Alert alert = new Alert(AlertType.WARNING);
+    	    	alert.setTitle("Warning Dialog");
+    	    	alert.setHeaderText("Error:");
+    	    	alert.setContentText("Insufficient funds.\nPlease try again.");
+    	    	alert.showAndWait();
+            }
+            connection.close();
+		} catch(Exception e){
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		System.out.println("Transaction added successfully");
+	}
+	public double getUserTotalFunds(int userId){
+		double totalAmount = 0.0;
+		try{
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_NAME);
+			String query = "SELECT TotalAmount FROM Users WHERE Id = ?;";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, userId);
+			ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+            	totalAmount = rs.getDouble(1);
+            }
+            connection.close();
+		} catch(Exception e){
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		System.out.println("GetUserTotalFunds successfully");
+		return totalAmount;
 	}
 }
