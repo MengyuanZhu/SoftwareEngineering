@@ -66,7 +66,7 @@ public class SignupController {
 		    newUser.setLastName(lastnameText.getText());
 		    newUser.setEmail(emailText.getText());
 		    newUser.setPassword(passwordText.getText()); //If going to be hashed, set this to hashed password.
-		    newUser.setTotalStockAmount(0); //Initialized to 0 because new user.
+		    newUser.setTotalAmount(0); //Initialized to 0 because new user.
 		    newUser.setUserName(usernameText.getText());
 		    dbHelper.addUser(newUser);
 		    Stage stage = (Stage) cancelButton.getScene().getWindow();
