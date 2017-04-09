@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="275.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.BuyStockController">
+   <children>
+      <Text layoutX="35.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Price:" />
+      <Text layoutX="35.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Stocks:" />
+      <Text layoutX="35.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Amount:" />
+      <Text layoutX="35.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Funds:" />
+      <Text layoutX="35.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Funds:" />
+      <Text layoutX="89.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Buy">
+         <font>
+            <Font name="Avenir Black" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="stockPriceText" layoutX="191.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placeholder" />
+      <Text fx:id="numStocksText" layoutX="191.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placeholder" />
+      <Text fx:id="totalAmountText" layoutX="191.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placeholder" />
+      <Text fx:id="totalFundsText" layoutX="191.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placeholder" />
+      <Text fx:id="newFundsText" layoutX="191.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placeholder" />
+      <Button fx:id="confirmButton" defaultButton="true" layoutX="63.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleConfirmButton" text="Confirm" />
+      <Button fx:id="cancelButton" cancelButton="true" layoutX="175.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
+   </children>
+</AnchorPane>
