@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StockController">
+   <children>
+      <HBox alignment="CENTER" layoutX="-2.0" layoutY="8.0" prefHeight="47.0" prefWidth="300.0">
+         <children>
+            <Text fx:id="stockNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Text fx:id="stockInfoText" layoutX="14.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Information" />
+      <LineChart fx:id="stockChart" layoutY="168.0" prefHeight="263.0" prefWidth="300.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="priceAxis" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Button fx:id="buyButton" layoutX="244.0" layoutY="447.0" mnemonicParsing="false" onAction="#handleBuy" text="Buy" />
+      <TextField fx:id="amountField" layoutX="170.0" layoutY="447.0" prefHeight="27.0" prefWidth="67.0" promptText="Amount" />
+   </children>
+</AnchorPane>
