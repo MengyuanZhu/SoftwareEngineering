@@ -1,3 +1,5 @@
+
+
 package helpers;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -11,9 +13,19 @@ import com.google.gson.Gson;
 
 import models.StockModel;
 
-
+/**
+ * DataParser is the parser class that takes in JSON data from google finance API
+ * and stores it into the StockModel class using GSON
+ * @author      Hyeun Kang
+ */
 public class DataParser {
 	boolean error = false;
+	
+	/**
+	 *Creates new StockModel class object called data.
+	 *Json file is parsed to data using gson.
+	 *
+	 */
 	public StockModel parseJSON(String string){
 		StockModel data = new StockModel();
 		if(error == false){
@@ -23,7 +35,9 @@ public class DataParser {
 		return data;
 	}
 	
-	
+	/**
+	 * Initiates the connection to google finance URL and reads in the stock information that is in JSON format.
+	 */
 	public String getJSON(String symbol) {
 		HttpURLConnection urlConnection = null;
 		StringBuilder result = new StringBuilder();

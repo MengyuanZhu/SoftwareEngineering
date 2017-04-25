@@ -1,3 +1,5 @@
+
+
 package helpers;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -15,7 +17,11 @@ import models.StockModel;
 import models.Volume;
 import models.YahooStockModel;
 
-
+/**
+ * YahooDataParser is the parser class that takes in JSON data from yahoo finance API
+ * and stores it into the StockModel class
+ * @author      Hyeun Kang
+ */
 public class YahooDataParser {
 	boolean error = false;
 	
@@ -23,7 +29,10 @@ public class YahooDataParser {
 		String value = line.substring(line.indexOf(':') + 1, line.length());
 		return value;
 	}
-	
+	/**
+	 * Initiates the connection to yahoo finance URL and reads in the stock information that is in JSON format
+	 * and stores them into the arraylist named data.
+	 */
 	public YahooStockModel getJSON(String symbol) {
 		HttpURLConnection urlConnection = null;
 		StringBuilder result = new StringBuilder();
@@ -51,7 +60,10 @@ public class YahooDataParser {
         finally {
             urlConnection.disconnect();
         }
-        // Yahoo Stocks CSV Parser
+        /**
+         * Yahoo Stocks CSV parser
+         */
+
         YahooStockModel model = new YahooStockModel();
         if(!error){
         	try{

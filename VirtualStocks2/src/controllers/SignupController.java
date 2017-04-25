@@ -1,3 +1,6 @@
+
+
+
 package controllers;
 
 import java.io.IOException;
@@ -24,7 +27,14 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.UserModel;
 
-
+/**
+ * SignupController is a class that connects the SignupView to the database
+ * The class includes functions:
+ * <ul>
+ * <li>Add new user to the database
+ * </ul>
+ * @author      Hyeun Kang
+ */
 public class SignupController {
 	
 	@FXML private TextField firstnameText;
@@ -37,6 +47,16 @@ public class SignupController {
 	
 	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 	
+	/**
+	 * This method adds new user to the database
+	 * The method includes functions:
+	 * <ul>
+	 * <li>Check if username already exists in the database and if it already exists, prompt the user with error message
+	 * <li>Check if username contains a blank space and if it contains, prompt the user with error message
+	 * <li>Check if email is valid and if it is not, prompt the user with error message
+	 * <li>If username passes all the tests, add the new user and all of its information to the database.
+	 * </ul>
+	 */
 	@FXML
 	private void handleSignup(ActionEvent event) {
 		if(dbHelper.checkExistingUsername(usernameText.getText())==true){
@@ -75,37 +95,58 @@ public class SignupController {
 		}
 	}
 	
+	/**
+	 * closes the signupview window(cancel)
+	 */
 	@FXML
 	private void handleCancel(ActionEvent event) {
 	    Stage stage = (Stage) cancelButton.getScene().getWindow();
 	    stage.close();
 	}
 	
+	/**
+	 * Initialize the username text box
+	 */
 	@FXML
 	private void handleUsername(MouseEvent event) {
 	    usernameText.setText("");
 	}
 	
+	/**
+	 * Initialize the email text box
+	 */
 	@FXML
 	private void handleEmail(MouseEvent event) {
 		emailText.setText("");
 	}
 	
+	/**
+	 * Initialize the password text box
+	 */
 	@FXML
 	private void handlePassword(MouseEvent event) {
 	    passwordText.setText("");
 	}
 
+	/**
+	 * Initialize the first name text box 
+	 */
 	@FXML
 	public void handleFirstName(MouseEvent event) {
 		firstnameText.setText("");
 	}
 
+	/**
+	 * Initialize the last name text box 
+	 */
 	@FXML
 	public void handleLastName(MouseEvent event) {
 		lastnameText.setText("");
 	}
 	
+	/**
+	 * Initialize the email text box 
+	 */
 	public static boolean validateEmail(String email) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(email);
         return matcher.find();

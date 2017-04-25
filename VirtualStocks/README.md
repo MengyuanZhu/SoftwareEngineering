@@ -1,8 +1,0 @@
-- Login, Signup controllers and views.
-- Models for users
-- Ability to sign in and sign up with database support.
-- Sign up verification handling (Makes sure correct email, no duplicate usernames, no spaces in username, etc)
-- Simple styling and other gimmicky features such as erase input on mouse click
-- Data parsing helper classes for both Google Finance API and Yahoo! Finance API
-- Parsed stock classes for both Google and Yahoo json objects
-- Database helper class (establishes connection, adds users, authenticate users, create database, create users and transaction tables, add transaction, check existing username, etc).

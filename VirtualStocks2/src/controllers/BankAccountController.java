@@ -1,3 +1,5 @@
+
+
 package controllers;
 
 import javafx.fxml.FXML;
@@ -13,6 +15,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
 
+/**
+ * BankAccountController is a class that connects the BankAccountView to the database.
+ * The class includes functions:
+ * <ul>
+ * <li>Get User's total funds from the database
+ * <li>Withdraw money from bank account
+ * <li>Deposit money to bank account
+ * <li>Validate the format of amount the user inputs
+ * </ul>
+ * @author      Hyeun Kang
+ */
 public class BankAccountController {
 
 	int userId;
@@ -28,7 +41,10 @@ public class BankAccountController {
 		double totalFunds = dbHelper.getUserTotalFunds(this.userId);
 		amountText.setText("$" + decimalFormatter.format(totalFunds));
 	}
-
+	/**
+	 * Withdraws money from user's account in database
+	 * if the format does not pass validAmount method, prompt user with error window
+	 */
 	@FXML public void handleWithdrawButton(ActionEvent event) {
 		if(validateAmount(amountTextField.getText())){
 			double amount = Double.parseDouble(amountTextField.getText());
@@ -46,6 +62,11 @@ public class BankAccountController {
 		}
 	}
 
+	/**
+	 * Adds money to user's account in database
+	 * if the format of your input does not pass the validAmount method, 
+	 * prompt user with error window
+	 */
 	@FXML public void handleDepositButton(ActionEvent event) {
 		if(validateAmount(amountTextField.getText())){
 			double amount = Double.parseDouble(amountTextField.getText());
@@ -62,6 +83,9 @@ public class BankAccountController {
 		}
 	}
 	
+	/**
+	 * Validates if the user input matches the VALID_AMOUNT_REGEX
+	 */
 	public static boolean validateAmount(String amount) {
         Matcher matcher = VALID_AMOUNT_REGEX .matcher(amount);
         return matcher.find();
